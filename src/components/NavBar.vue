@@ -1,60 +1,105 @@
 <template>
-<!--  <div>-->
+  <v-card class="overflow-hidden">
     <v-app-bar
       app
-      color="primary"
+      color="#43a047"
       dark
+      shrink-on-scroll
+      prominent
+      src="https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg"
+      fade-img-on-scroll
+      scroll-target="#scrolling-techniques-2"
+      scroll-threshold="500"
     >
-      <div class="d-flex align-center">
+      <template v-slot:img="{ props }">
         <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
+          v-bind="props"
+          gradient="to top right, rgba(55,236,186,.7), rgba(25,32,72,.7)"
         />
+      </template>
+      <v-app-bar-nav-icon/>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+      <v-app-bar-title>Title</v-app-bar-title>
 
-      <v-spacer></v-spacer>
+      <v-spacer/>
 
-      <router-link to="/">
+<!--      <div class="d-flex align-center">-->
+<!--        <v-img-->
+<!--          alt="Vuetify Logo"-->
+<!--          class="shrink mr-2"-->
+<!--          contain-->
+<!--          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"-->
+<!--          transition="scale-transition"-->
+<!--          width="40"-->
+<!--        />-->
+
+<!--        <v-img-->
+<!--          alt="Vuetify Name"-->
+<!--          class="shrink mt-1 hidden-sm-and-down"-->
+<!--          contain-->
+<!--          min-width="100"-->
+<!--          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"-->
+<!--          width="100"-->
+<!--        />-->
+<!--      </div>-->
+
+<!--      <v-switch-->
+<!--        v-model="$vuetify.theme.dark"-->
+<!--        inset-->
+<!--        label="Vuetify Theme Dark"-->
+<!--        class="dark-switch"-->
+<!--      />-->
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+      <router-link to="/" class="router-link-btn">
         <v-btn
           color="#fff"
           text
         >
-          <span class="router-link-btn">
+          <span>
             Home
           </span>
         </v-btn>
       </router-link>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <router-link to="/profile" class="router-link-btn">
+        <v-btn
+          color="#fff"
+          text
+        >
+          Profile
+        </v-btn>
+      </router-link>
+      <router-link to="/about" class="router-link-btn">
+        <v-btn
+          color="#fff"
+          text
+        >
+          About
+        </v-btn>
+      </router-link>
     </v-app-bar>
-
-<!--    <div id="nav">-->
-<!--      <router-link to="/">Home</router-link> |-->
-<!--      <router-link to="/about">About</router-link> |-->
-<!--      <router-link to="/profile">Profile</router-link>-->
-<!--    </div>-->
-<!--  </div>-->
+    <v-sheet
+      id="scrolling-techniques-2"
+      class="overflow-y-auto"
+      max-height="600"
+    >
+      <Home/>
+<!--      <router-view/>-->
+<!--      <v-container style="height: 1500px;"></v-container>-->
+    </v-sheet>
+  </v-card>
 </template>
+
+<script>
+import Home from '../views/Home.vue';
+
+export default {
+  components: {
+    Home,
+  },
+};
+</script>
 
 <style>
   #nav {
@@ -69,7 +114,10 @@
   #nav a.router-link-exact-active {
     color: #42b983;
   }
-  /*.router-link-btn a {*/
-  /*  color: #fff !important;*/
-  /*}*/
+  .router-link-btn {
+    text-decoration: none;
+  }
+  .dark-switch {
+    margin-top: 8px !important;
+  }
 </style>

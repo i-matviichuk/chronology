@@ -1,24 +1,20 @@
 <template>
   <v-app>
-    <NavBar/>
     <v-main>
-      <HelloWorld/>
-
+<!--      <NavBar/>-->
       <router-view/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import NavBar from './components/NavBar.vue';
+// import NavBar from './components/NavBar.vue';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
-    NavBar,
+    // NavBar,
   },
 
   data: () => ({
@@ -26,3 +22,9 @@ export default {
   }),
 };
 </script>
+
+<style>
+  .v-toolbar__image {
+    border-radius: 0;
+  }
+</style>
